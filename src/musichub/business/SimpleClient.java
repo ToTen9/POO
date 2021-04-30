@@ -34,11 +34,9 @@ public class SimpleClient {
 			//Student student = (Student) input.readObject();	//de-serialize and read the Student object from the stream
 			//System.out.println("Received student id: " + student.getID() + " and student name:" + student.getName() + " from server");
 			
-		Interface();
-			// Get music and Play it
-
-
-			
+            //Launching interface client
+            Interface();
+					
 	    } catch  (UnknownHostException uhe) {
 			uhe.printStackTrace();
 		}
@@ -58,6 +56,7 @@ public class SimpleClient {
 			}
 		}
 	}
+	
 	public void Play() {
 		try {
 			System.out.println("What do you want in your hears ? ");
@@ -77,7 +76,7 @@ public class SimpleClient {
 			os.close();is.close();
 			String temp_url = temp.getPath();
 			System.out.println(temp.getName() + " recu\n");
-			
+		
 			//Playing music 
 			PlaySound play = new PlaySound();
 	        play.playSound(temp_url, scan);
@@ -153,8 +152,13 @@ public class SimpleClient {
 				printAvailableCommands();
 				choice = scan.nextLine();
 				break;
+			case 'q':
+				System.exit(0);
+				break;
 			default:
-		
+				System.out.println("Please enter correct input");
+				printAvailableCommands();
+				choice = scan.nextLine();
 				break;
 			}
 		}

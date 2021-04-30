@@ -35,13 +35,13 @@ public class ServerThread extends Thread {
 			byte[] b = new byte[4096];
 			InputStream is = new FileInputStream(audio);
 			OutputStream os = socket.getOutputStream();
-			
+
 			int i;
 			while((i = is.read(b)) > 0) {
 				os.write(b, 0, i);
 			}
 			//is.close();
-			//os.close();			
+			//os.close();
 
 		} catch (IOException ex) {
 			System.out.println("Server exception: " + ex.getMessage());

@@ -5,6 +5,7 @@ import java.net.*;
 
 public class FirstServer extends AbstractServer
 {
+	@SuppressWarnings("unused")
 	private String ip = "localhost";
 	private ServerSocket ss;
 	
