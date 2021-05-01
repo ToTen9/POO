@@ -8,10 +8,7 @@ public class Main {
 		if (args.length > 0) {
 			if("server".equals(args[0])) {
 				AbstractServer as = new FirstServer();
-				as.connect(ip);
-				System.out.println("Server OK\nLaunching Interface...");
-				ServerInterface SI = new ServerInterface();
-				SI.Interface();
+				as.connect(ip);				
 			}
 			if("client".equals(args[0])) {
 				SimpleClient c1 = new SimpleClient();

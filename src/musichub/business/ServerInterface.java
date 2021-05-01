@@ -3,8 +3,8 @@ package musichub.business;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class ServerInterface {
-	public void Interface () {
+public class ServerInterface extends Thread {
+	public void run () {
 		MusicHub theHub = new MusicHub();
 		System.out.print("Welcome to the MusicHub Server Interface\n");
 		System.out.println("Type h for available commands");
@@ -227,8 +227,13 @@ public class ServerInterface {
 				printAvailableCommands();
 				choice = scanner.nextLine();
 				break;
+			case 'q':
+				System.exit(0);
+				break;
 			default:
-		
+				System.out.println("Please enter correct input");
+				printAvailableCommands();
+				choice = scanner.nextLine();
 				break;
 			}
 		}

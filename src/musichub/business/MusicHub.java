@@ -1,5 +1,6 @@
 package musichub.business;
 
+import java.io.Serializable;
 import java.util.*;
 import musichub.util.*;
 import org.w3c.dom.*;
@@ -25,7 +26,7 @@ class SortByAuthor implements Comparator<AudioElement>
 	} 
 }
 	
-public class MusicHub {
+public class MusicHub implements Serializable {
 	private List<Album> albums;
 	private List<PlayList> playlists;
 	private List<AudioElement> elements;
@@ -44,6 +45,21 @@ public class MusicHub {
 		this.loadElements();
 		this.loadAlbums();
 		this.loadPlaylists();
+	}
+	public MusicHub (LinkedList<Album> albums, LinkedList<PlayList> playlists, LinkedList<AudioElement> elements) {
+		this.albums = albums;
+		this.playlists = playlists;
+		this.elements = elements;
+	}
+	
+	public List<Album> getAlbums() {
+		return albums;
+	}
+	public List<PlayList> getPlaylists() {
+		return playlists;
+	}
+	public List<AudioElement> getElements() {
+		return elements;
 	}
 	
 	public void addElement(AudioElement element) {

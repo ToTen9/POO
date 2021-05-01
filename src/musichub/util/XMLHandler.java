@@ -8,11 +8,12 @@ import org.xml.sax.SAXException;
 
 import org.w3c.dom.*;
 import java.io.IOException;
+import java.io.Serializable;
 import java.io.File;
 
 
 
-public class XMLHandler {
+public class XMLHandler implements Serializable{
 	TransformerFactory transformerFactory;
 	Transformer transformer;
 	DocumentBuilderFactory documentFactory;
