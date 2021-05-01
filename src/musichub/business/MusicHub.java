@@ -38,7 +38,7 @@ public class MusicHub implements Serializable {
 	
 	private XMLHandler xmlHandler = new XMLHandler();
 	
-	public MusicHub () {
+	public MusicHub () { 
 		albums = new LinkedList<Album>();
 		playlists = new LinkedList<PlayList>();
 		elements = new LinkedList<AudioElement>();
