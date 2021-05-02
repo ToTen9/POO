@@ -3,7 +3,16 @@ package musichub.business;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author antho
+ *
+ */
 public class ServerInterface extends Thread {
+	
+	/**
+	 * Print the Server inteface and allow us to choose an interaction
+	 */
 	public void run () {
 		MusicHub theHub = new MusicHub();
 		System.out.print("Welcome to the MusicHub Server Interface\n");

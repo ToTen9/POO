@@ -25,7 +25,7 @@ class SortByAuthor implements Comparator<AudioElement>
 			return e1.getArtist().compareTo(e2.getArtist());
 	} 
 }
-	
+
 public class MusicHub implements Serializable {
 	private List<Album> albums;
 	private List<PlayList> playlists;
@@ -46,34 +46,72 @@ public class MusicHub implements Serializable {
 		this.loadAlbums();
 		this.loadPlaylists();
 	}
+	/**
+	 * 
+	 * @param albums
+	 * @param playlists
+	 * @param elements
+	 */
 	public MusicHub (LinkedList<Album> albums, LinkedList<PlayList> playlists, LinkedList<AudioElement> elements) {
 		this.albums = albums;
 		this.playlists = playlists;
 		this.elements = elements;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * 	The albums
+	 */
 	public List<Album> getAlbums() {
 		return albums;
 	}
+	/**
+	 * 
+	 * @return
+	 * 	The playlists
+	 */
 	public List<PlayList> getPlaylists() {
 		return playlists;
 	}
+	/**
+	 * 
+	 * @return
+	 * 		The audio elements
+	 */
 	public List<AudioElement> getElements() {
 		return elements;
 	}
 	
+	/**
+	 * 
+	 * @param element
+	 */
 	public void addElement(AudioElement element) {
 		elements.add(element);
 	}
 	
+	/**
+	 * 
+	 * @param album
+	 */
 	public void addAlbum(Album album) {
 		albums.add(album);
 	}
 	
+	/**
+	 * 
+	 * @param playlist
+	 */
 	public void addPlaylist(PlayList playlist) {
 		playlists.add(playlist);
 	}
 	
+	/**
+	 * 
+	 * @param playListTitle
+	 * @throws NoPlayListFoundException
+	 */
 	public void deletePlayList(String playListTitle) throws NoPlayListFoundException {
 		
 		PlayList thePlayList = null;
@@ -90,18 +128,35 @@ public class MusicHub implements Serializable {
 		if (!result) throw new NoPlayListFoundException("Playlist " + playListTitle + " not found!");
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Iterator<Album> albums() { 
 		return albums.listIterator();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Iterator<PlayList> playlists() { 
 		return playlists.listIterator();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Iterator<AudioElement> elements() { 
 		return elements.listIterator();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * 		Albums sorted by date
+	 */
 	public String getAlbumsTitlesSortedByDate() {
 		StringBuffer titleList = new StringBuffer();
 		Collections.sort(albums, new SortByDate());
@@ -110,6 +165,11 @@ public class MusicHub implements Serializable {
 		return titleList.toString();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * 		The audiobook sorted by author
+	 */
 	public String getAudiobooksTitlesSortedByAuthor() {
 		StringBuffer titleList = new StringBuffer();
 		List<AudioElement> audioBookList = new ArrayList<AudioElement>();
@@ -122,6 +182,13 @@ public class MusicHub implements Serializable {
 		return titleList.toString();
 	}
 
+	/**
+	 * 
+	 * @param albumTitle
+	 * @return
+	 * 			Songs from the album
+	 * @throws NoAlbumFoundException
+	 */
 	public List<AudioElement> getAlbumSongs (String albumTitle) throws NoAlbumFoundException {
 		Album theAlbum = null;
 		ArrayList<AudioElement> songsInAlbum = new ArrayList<AudioElement>();
@@ -144,6 +211,13 @@ public class MusicHub implements Serializable {
 		
 	}
 	
+	/**
+	 * 
+	 * @param albumTitle
+	 * @return
+	 * 			The songs from the album sorted by genre
+	 * @throws NoAlbumFoundException
+	 */
 	public List<Song> getAlbumSongsSortedByGenre (String albumTitle) throws NoAlbumFoundException {
 		Album theAlbum = null;
 		ArrayList<Song> songsInAlbum = new ArrayList<Song>();
@@ -167,6 +241,13 @@ public class MusicHub implements Serializable {
 		
 	}
 
+	/**
+	 * 
+	 * @param elementTitle
+	 * @param albumTitle
+	 * @throws NoAlbumFoundException
+	 * @throws NoElementFoundException
+	 */
 	public void addElementToAlbum(String elementTitle, String albumTitle) throws NoAlbumFoundException, NoElementFoundException
 	{
 		Album theAlbum = null;
@@ -199,6 +280,13 @@ public class MusicHub implements Serializable {
 		
 	}
 	
+	/**
+	 * 
+	 * @param elementTitle
+	 * @param playListTitle
+	 * @throws NoPlayListFoundException
+	 * @throws NoElementFoundException
+	 */
 	public void addElementToPlayList(String elementTitle, String playListTitle) throws NoPlayListFoundException, NoElementFoundException
 	{
 		PlayList thePlaylist = null;
@@ -294,7 +382,6 @@ public class MusicHub implements Serializable {
 			}  
 		}
 	}
-
 
 	public void saveAlbums () {
 		Document document = xmlHandler.createXMLDocument();

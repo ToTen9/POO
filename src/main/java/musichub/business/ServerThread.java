@@ -6,6 +6,9 @@ import java.net.*;
 /**
  * This thread is responsible to handle client connection.
  */
+/**
+ * @author antho
+ */
 public class ServerThread extends Thread {
 	// Usefull declarations
 	private Socket socket;
@@ -15,10 +18,17 @@ public class ServerThread extends Thread {
 	InputStream is;
 	MusicHub MHub;
 	
+	/**
+	 * 
+	 * @param socket
+	 */
 	public ServerThread(Socket socket) {
 		this.socket = socket;
 	}
 
+	/**
+	 * Open connection and files thanks to the server thread and socket
+	 */
 	public void run() {
 		try {
 			// create the streams that will handle the objects coming through the sockets
@@ -73,6 +83,9 @@ public class ServerThread extends Thread {
 		}
 	}
 	
+	/**
+	 * Send new XML files for the client by the output stream
+	 */
 	public void XML_Update() {
 		MHub = new MusicHub();
 		// Sending Objects (XML files) to the client, like this he can knows what's in his playlists/Albums..

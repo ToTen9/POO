@@ -9,6 +9,10 @@ public class FirstServer extends AbstractServer
 	private String ip = "localhost";
 	private ServerSocket ss;
 	
+	/**
+	 * 
+	 * @param ip
+	 */
 	public void connect(String ip) {
 		try {
 			//the server socket is defined only by a port (its IP is localhost)

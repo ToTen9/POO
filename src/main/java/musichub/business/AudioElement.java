@@ -11,6 +11,14 @@ public abstract class AudioElement implements Serializable{
 	protected UUID    	uuid;
 	protected String	content;
 	
+	/**
+	 * 
+	 * @param title
+	 * @param artist
+	 * @param lengthInSeconds
+	 * @param id
+	 * @param content
+	 */
 	public AudioElement (String title, String artist, int lengthInSeconds, String id, String content) {
 		
 		this.title = title;
@@ -20,6 +28,13 @@ public abstract class AudioElement implements Serializable{
 		this.content = content;
 	}
 
+	/**
+	 * 
+	 * @param title
+	 * @param artist
+	 * @param lengthInSeconds
+	 * @param content
+	 */
 	public AudioElement (String title, String artist, int lengthInSeconds, String content) {
 
 		this.title = title;
@@ -29,6 +44,11 @@ public abstract class AudioElement implements Serializable{
 		this.uuid =  UUID.randomUUID();
 	}
 	
+	/**
+	 * 
+	 * @param xmlElement
+	 * @throws Exception
+	 */
 	public AudioElement (Element xmlElement)  throws Exception
 	{
 		try {
@@ -51,22 +71,46 @@ public abstract class AudioElement implements Serializable{
 		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * 		The unique ID of the audio element
+	 */
 	public UUID getUUID() {
 		return this.uuid;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 *		The artist of the audio element
+	 */
 	public String getArtist() {
 		return this.artist;
 	}
 
+	/**
+	 * 
+	 * @return
+	 *		The title of the audio element
+	 */
 	public String getTitle() {
 		return this.title;
 	}
 	
+	/**
+	 * @return 
+	 * 		The title + artist + length and the content of the audio element
+	 */
 	public String toString() {
 		return "Title = " + this.title + ", Artist = " + this.artist + ", Length = " + this.lengthInSeconds + ", Content = " + this.content;
 	}
 
+	/**
+	 * 
+	 * @param document
+	 * @param parentElement
+	 */
 	public void createXMLElement(Document document, Element parentElement)
 	{
 		Element nameElement = document.createElement("title");

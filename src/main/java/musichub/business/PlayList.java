@@ -9,31 +9,60 @@ public class PlayList implements Serializable{
 	private UUID uuid;
 	private ArrayList<UUID> elementUUIDs;
 
+	/**
+	 * 
+	 * @param title
+	 * @param id
+	 * @param elementUUIDs
+	 */
 	public PlayList (String title, String id, ArrayList<UUID> elementUUIDs) {
 		this.title = title;
 		this.uuid = UUID.fromString(id);
 		this.elementUUIDs = elementUUIDs;
 	}
 	
+	/**
+	 * 
+	 * @param title
+	 */
 	public PlayList (String title) {
 		this.title = title;
 		this.uuid = UUID.randomUUID();
 		this.elementUUIDs = new ArrayList<UUID>();
 	}
 	
+	/**
+	 * 
+	 * @param element
+	 */
 	public void addElement (UUID element)
 	{
 		elementUUIDs.add(element);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * 		The elements of the playlist
+	 */
 	public ArrayList<UUID> getElements() {
 		return elementUUIDs;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 *		The title of the playlist
+	 */
 	public String getTitle() {
 		return title;
 	}
 	
+	/**
+	 * 
+	 * @param xmlElement
+	 * @throws Exception
+	 */
 	public PlayList (Element xmlElement) throws Exception {
 		try {
 			this.title = xmlElement.getElementsByTagName("title").item(0).getTextContent();
@@ -74,7 +103,11 @@ public class PlayList implements Serializable{
 		}
 	}
 	
-	
+	/**
+	 * 
+	 * @param document
+	 * @param parentElement
+	 */
 	public void createXMLElement(Document document, Element parentElement)
 	{
 		Element playlistElement = document.createElement("playlist");

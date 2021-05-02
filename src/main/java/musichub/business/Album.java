@@ -5,6 +5,7 @@ import org.w3c.dom.*;
 import java.io.Serializable;
 import java.text.*;
 
+
 public class Album implements Serializable{
 	private String title;
 	private String artist;
@@ -12,7 +13,15 @@ public class Album implements Serializable{
 	private UUID uuid;
 	private Date date;
 	private ArrayList<UUID> songsUIDs;
-
+/**
+ * 
+ * @param title
+ * @param artist
+ * @param lengthInSeconds
+ * @param id
+ * @param date
+ * @param songsUIDs
+ */
 	public Album (String title, String artist, int lengthInSeconds, String id, String date, ArrayList<UUID> songsUIDs) {
 		this.title = title;
 		this.artist = artist;
@@ -27,6 +36,13 @@ public class Album implements Serializable{
 		this.songsUIDs = songsUIDs;
 	}
 	
+	/**
+	 * 
+	 * @param title
+	 * @param artist
+	 * @param lengthInSeconds
+	 * @param date
+	 */
 	public Album (String title, String artist, int lengthInSeconds, String date) {
 		this.title = title;
 		this.artist = artist;
@@ -41,6 +57,12 @@ public class Album implements Serializable{
 		this.songsUIDs = new ArrayList<UUID>();
 	}
 	
+	/**
+	 * 
+	 * @param xmlElement
+	 * 					The XML element aka XML file
+	 * @throws Exception
+	 */
 	public Album (Element xmlElement) throws Exception {
 		try {
 			this.title = xmlElement.getElementsByTagName("title").item(0).getTextContent();
@@ -82,13 +104,20 @@ public class Album implements Serializable{
 		}
 	}
 	
-	
+	/**
+	 * 
+	 * @param song
+	 */
 	public void addSong (UUID song)
 	{
 		songsUIDs.add(song);
 	}
 	
-	
+	/**
+	 * 
+	 * @return
+	 * 		A list of the songs in the album
+	 */
 	public List<UUID> getSongs() {
 		return songsUIDs;
 	}
@@ -99,14 +128,29 @@ public class Album implements Serializable{
 		return shuffledSongs;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * 		The title of the album
+	 */
 	public String getTitle() {
 		return title;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 *		The date of the album
+	 */
 	public Date getDate() {
 		return date;
 	}
 	
+	/**
+	 * 
+	 * @param document
+	 * @param parentElement
+	 */
 	public void createXMLElement(Document document, Element parentElement)
 	{
 		Element albumElement = document.createElement("album");
