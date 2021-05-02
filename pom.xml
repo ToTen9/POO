@@ -5,7 +5,7 @@
 	<groupId>POO</groupId>
 	<artifactId>POO</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>first_test</name>
+	<name>POM_XML</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
