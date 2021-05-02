@@ -7,12 +7,12 @@ import java.net.*;
  * This thread is responsible to handle client connection.
  */
 public class ServerThread extends Thread {
+	// Usefull declarations
 	private Socket socket;
 	private ObjectInputStream input;
 	private ObjectOutputStream output;
 	String text_received;
 	InputStream is;
-	File audio; 
 	MusicHub MHub;
 	
 	public ServerThread(Socket socket) {
@@ -25,48 +25,35 @@ public class ServerThread extends Thread {
 			input = new ObjectInputStream(socket.getInputStream());
 			output = new ObjectOutputStream(socket.getOutputStream());
 			
-			// Creation du os sur le socket
+			// Creation of an OutputStream on the socket (we're going to use it to send data through this port)
 			OutputStream os = socket.getOutputStream();
 			
+			// Sending xml data needed to the client 
 			XML_Update();
 			
 			while(true) {
+				// read the object received through the stream and deserialize it
+				text_received = (String) input.readObject();
 				
-				text_received = (String) input.readObject(); // read the object received through the stream and deserialize it
 				if(text_received.equals("update")) {
-					System.out.println("Sending update");
+					System.out.println("Updating client with new XML files...");
 					XML_Update();
-					System.out.println("Update ok");
-
+					System.out.println("Update done !");
 				}
 				else {
 					
+					// Assuming that the only other case that client send data to the server is when he wants to listen a song
+					// if one day we add a new features we need to do as above in the "if"
                     InputStream in = getClass().getClassLoader().getResourceAsStream(/*"files/"+*/text_received + ".wav");
-//                    if (in == null) output.writeObject(NOT_FOUND_RESPONSE);
-//                    else output.writeObject(OK_RESPONSE);
+
                     byte[] bytes = new byte[4096];
                     int count;
+                    // by this while we send data by packet of bytes using the OutputStream opened before
                     while ((count = in.read(bytes)) > 0) {
                         os.write(bytes, 0, count);
                     }
                     in.close();
 				}
-//				else {
-//					System.out.println("Client whishes: " + text_received);
-//
-//					audio = new File("files\\"+ text_received +".wav");
-//					System.out.print("\nOk, sending " + audio.getName() + "\n");
-//					byte[] b = new byte[4096];
-//					is = new FileInputStream(audio);
-//					
-//					int i;
-//
-//					while((i = is.read(b)) > 0) {
-//						os.write(b, 0, i);
-//					}
-//					is.close();
-//				}
-				
 			}
 
 		} catch (IOException ex) {
@@ -88,7 +75,7 @@ public class ServerThread extends Thread {
 	
 	public void XML_Update() {
 		MHub = new MusicHub();
-		
+		// Sending Objects (XML files) to the client, like this he can knows what's in his playlists/Albums..
 		try {
 			output.writeObject(MHub.getAlbums());
 			output.writeObject(MHub.getPlaylists());
