@@ -41,7 +41,7 @@ public class ServerThread extends Thread {
 				}
 				else {
 					
-                    InputStream in = getClass().getClassLoader().getResourceAsStream("files/"+text_received + ".wav");
+                    InputStream in = getClass().getClassLoader().getResourceAsStream(/*"files/"+*/text_received + ".wav");
 //                    if (in == null) output.writeObject(NOT_FOUND_RESPONSE);
 //                    else output.writeObject(OK_RESPONSE);
                     byte[] bytes = new byte[4096];
