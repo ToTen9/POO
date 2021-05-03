@@ -10,6 +10,7 @@ import java.net.*;
  * @author antho
  */
 public class ServerThread extends Thread {
+	
 	// Usefull declarations
 	private Socket socket;
 	private ObjectInputStream input;

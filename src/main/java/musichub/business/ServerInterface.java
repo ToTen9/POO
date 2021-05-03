@@ -240,7 +240,7 @@ public class ServerInterface extends Thread {
 				System.exit(0);
 				break;
 			default:
-				System.out.println("Please enter correct input");
+				System.out.println("Please enter correct input\n\n\n");
 				printAvailableCommands();
 				choice = scanner.nextLine();
 				break;

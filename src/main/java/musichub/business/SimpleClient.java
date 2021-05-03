@@ -11,11 +11,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 
-/**
- * 
- * @author antho
- *
- */
+
 public class SimpleClient {
 	
 	private Socket socket;
