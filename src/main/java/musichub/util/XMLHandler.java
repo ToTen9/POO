@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.io.File;
 
 
+
 public class XMLHandler implements Serializable{
 	TransformerFactory transformerFactory;
 	Transformer transformer;
@@ -31,11 +32,6 @@ public class XMLHandler implements Serializable{
         }
 	}
 	
-	/**
-	 * 
-	 * @param document
-	 * @param filePath
-	 */
 	public void createXMLFile(Document document, String filePath)
 	{
 		try {
@@ -56,25 +52,15 @@ public class XMLHandler implements Serializable{
         }
 	}
 	
-	/**
-	 * 
-	 * @return new XML document
-	 */
 	public Document createXMLDocument()
 	{
 		return documentBuilder.newDocument();
-	}
+	}		
 	
-	/**
-	 * 
-	 * @param filePath
-	 * 				Path to the XML files
-	 * @return elementsNodes
-	 * 		the element nodes
-	 */
 	public NodeList parseXMLFile (String filePath) {
 		NodeList elementNodes = null;
 		try {
+			// Because document does not work well in maven project
 			Document document = documentBuilder.parse(getClass().getClassLoader().getResourceAsStream(filePath));
 			//Document document= documentBuilder.parse(new File(filePath));
 			Element root = document.getDocumentElement();
@@ -91,7 +77,4 @@ public class XMLHandler implements Serializable{
 		}
 		return elementNodes;
 	}
-	
-	
-
 }

@@ -31,11 +31,10 @@ public class MusicHub implements Serializable {
 	private List<PlayList> playlists;
 	private List<AudioElement> elements;
 	
-	public static final String DIR = System.getProperty("user.dir");
-	public static final String ALBUMS_FILE_PATH = "albums.xml";
+	public static final String ALBUMS_FILE_PATH ="albums.xml";
 	public static final String PLAYLISTS_FILE_PATH = "playlists.xml";
 	public static final String ELEMENTS_FILE_PATH = "elements.xml";
-
+	
 	private XMLHandler xmlHandler = new XMLHandler();
 	
 	public MusicHub () {
