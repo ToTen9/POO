@@ -1,9 +1,4 @@
 # POO
-Lauch order:
-1- compile.bat
-2- runServer.bat
-3- runClient.bat
-(all.bat -> compile + launch server)
 
 For maven build:
 run as maven build->
@@ -15,3 +10,5 @@ To exec them use in the order:
 
 For JavaDoc:
 See in target.site.apidocs
+
+You cannot write xml files with .jar, use main class to do
