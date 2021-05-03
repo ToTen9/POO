@@ -32,12 +32,16 @@ public class SimpleClient {
         try  {
 			//create the socket; it is defined by an remote IP address (the address of the server) and a port number
 			socket = new Socket(ip, port);
+			System.out.println("socket");
 
 			//create the streams that will handle the objects coming and going through the sockets
 			output = new ObjectOutputStream(socket.getOutputStream());
             input = new ObjectInputStream(socket.getInputStream());
+            System.out.println("in/out");
+
             // Creation of the InputStream on the socket
 			is = socket.getInputStream();
+			System.out.println("is ");
 
             //Launching interface client
             Interface();
@@ -78,16 +82,18 @@ public class SimpleClient {
 			ioe.printStackTrace();
 		}
 	}
-	
-	
+
 	@SuppressWarnings("unchecked")
 	public void Interface () {
 		try {
+			System.out.println("Start interface");
+
 			LinkedList<Album> albums =  (LinkedList<Album>) input.readObject();
+			System.out.println("LL A");
 			LinkedList<PlayList> playlists = (LinkedList<PlayList>) input.readObject();
 			LinkedList<AudioElement> elements = (LinkedList<AudioElement>) input.readObject();
 			MusicHub theHub = new MusicHub(albums, playlists, elements);
-				
+
 			System.out.print("Welcome to the MusicHub Client Interface\n");
 			System.out.println("Type h for available commands");
 			

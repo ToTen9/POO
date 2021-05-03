@@ -3,17 +3,13 @@ package musichub.business;
 import java.util.Iterator;
 import java.util.Scanner;
 
-/**
- * 
- * @author antho
- *
- */
 public class ServerInterface extends Thread {
 	
 	/**
-	 * Print the Server inteface and allow us to choose an interaction
+	 * Print the Server interface and allow us to choose an interaction
 	 */
 	public void run () {
+		System.out.println("In run");
 		MusicHub theHub = new MusicHub();
 		System.out.print("Welcome to the MusicHub Server Interface\n");
 		System.out.println("Type h for available commands");

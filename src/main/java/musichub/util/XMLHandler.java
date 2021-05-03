@@ -69,13 +69,14 @@ public class XMLHandler implements Serializable{
 	 * 
 	 * @param filePath
 	 * 				Path to the XML files
-	 * @return
+	 * @return elementsNodes
 	 * 		the element nodes
 	 */
 	public NodeList parseXMLFile (String filePath) {
 		NodeList elementNodes = null;
 		try {
-			Document document= documentBuilder.parse(getClass().getClassLoader().getResourceAsStream(filePath));
+			Document document = documentBuilder.parse(getClass().getClassLoader().getResourceAsStream(filePath));
+			//Document document= documentBuilder.parse(new File(filePath));
 			Element root = document.getDocumentElement();
 			
 			elementNodes = root.getChildNodes();	

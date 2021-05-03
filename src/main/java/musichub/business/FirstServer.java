@@ -19,6 +19,7 @@ public class FirstServer extends AbstractServer
 			ss = new ServerSocket (6666);
 			System.out.println("Server waiting for connection...");
 			new ServerInterface().start();
+			System.out.println("ServerInterface.start");
 			while (true) {
 				Socket socket = ss.accept();//establishes connection
 				System.out.println("Connected as " + ip);
